@@ -31,6 +31,7 @@ Implementation of a PXE Stack over Docker
  -  [ ] fnode docker-compose file
    -  [ ] tftp config
    -  [ ] nfs config
+   -  [ ] nginx config
  - [ ] distro support
    -  [ ] ubuntu
       -  [ ] mate
