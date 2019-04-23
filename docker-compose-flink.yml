@@ -13,6 +13,7 @@ services:
       driver: "json-file"
       options:
         max-size: "10m"
+        max-file: "3"
     environment:
       HTTP_USER:
       HTTP_PASS:
@@ -20,3 +21,5 @@ services:
   squid:
     image: datadog/squid
     restart: unless-stopped
+    volumes:
+    - ./squid/cache:/var/spool/squid
