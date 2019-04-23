@@ -4,11 +4,13 @@ services:
     image: jpillora/dnsmasq
     ports:
     - 53:53/udp
-    - 54:54/udp
-    - 54:54/tcp
+    - 67:67/udp
     - 5380:8080/tcp
     volumes:
-    - ./dnsmasq/dnsmasq.conf:/etc/dnsmasq.conf:rw
+    - /etc/resolv.conf:/etc/resolv.conf:ro
+    - ./dnsmasq/dnsmasq.conf:/etc/dnsmasq.conf:ro
+    - ./dnsmasq/fnodes:/etc/fnodes:ro
+    - ./dnsmasq/dnsmasq.leases:/tmp/dnsmasq.leases
     logging:
       driver: "json-file"
       options:
