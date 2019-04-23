@@ -49,11 +49,11 @@ Implementation of a PXE Stack over Docker
 ### requirements
 
  -  At least one baremetal or vm with linux
-   -  [x] tested on debian
-   -  [x] tested on archlinux
-   -  [ ] tested on ubuntu
-   -  [ ] tested on fedora
-   -  [ ] tested on centos
+    -  [x] tested on debian
+    -  [x] tested on archlinux
+    -  [ ] tested on ubuntu
+    -  [ ] tested on fedora
+    -  [ ] tested on centos
  -  docker
  -  docker-compose
    
