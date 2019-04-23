@@ -33,18 +33,18 @@ Implementation of a PXE Stack over Docker
    -  [ ] nfs config
  - [ ] distro support
    -  [ ] ubuntu
-     -  [ ] mate
-     -  [ ] xubuntu
+      -  [ ] mate
+      -  [ ] xubuntu
    -  [ ] linuxmint
-     -  [ ] cinnamon
-     -  [ ] mate
-     -  [ ] xfce
+      -  [ ] cinnamon
+      -  [ ] mate
+      -  [ ] xfce
    -  [ ] debian
    -  [ ] manjaro
    -  [ ] tools
-     -  [ ] sysrescuecd
-     -  [ ] archlinux
-     -  [ ] gparted live
+      -  [ ] sysrescuecd
+      -  [ ] archlinux
+      -  [ ] gparted live
 
 ### requirements
 
