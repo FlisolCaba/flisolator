@@ -17,15 +17,5 @@ services:
     - HTTP_USER=root
     - HTTP_PASS=
     restart: unless-stopped
-
-  tftpd-hpa:
-    image: jumanjiman/tftp-hpa
-
-  nginx:
-    image: nginx:mainline-alpine
-
-  nfs:
-    image: outstand/nfs-client
-
   proxy:
     image: datadog/squid

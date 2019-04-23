@@ -1,0 +1,8 @@
+version: '3'
+services:
+  tftpd-hpa:
+    image: jumanjiman/tftp-hpa
+  nginx:
+    image: nginx:mainline-alpine
+  nfs:
+    image: outstand/nfs-client
