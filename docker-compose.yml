@@ -1,0 +1,31 @@
+version: '3'
+services:
+  dnsmasq:
+    image: jpillora/dnsmasq
+    ports:
+    - 53:53/udp
+    - 54:54/udp
+    - 54:54/tcp
+    - 5380:8080
+    volumes:
+    - ./dnsmasq/dnsmasq.conf:/etc/dnsmasq.conf:rw
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+    environment:
+    - HTTP_USER=root
+    - HTTP_PASS=
+    restart: unless-stopped
+
+  tftpd-hpa:
+    image: jumanjiman/tftp-hpa
+
+  nginx:
+    image: nginx:mainline-alpine
+
+  nfs:
+    image: outstand/nfs-client
+
+  proxy:
+    image: datadog/squid
