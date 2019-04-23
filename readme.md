@@ -26,8 +26,8 @@ Implementation of a PXE Stack over Docker
  -  [ ] flink docker-compose file
    -  [ ] dnsmasq config
    -  [ ] squid config
-     -  [ ] transparent proxy
-     -  [ ] bandwidth limit?
+      -  [ ] transparent proxy
+      -  [ ] bandwidth limit?
  -  [ ] fnode docker-compose file
    -  [ ] tftp config
    -  [ ] nfs config
