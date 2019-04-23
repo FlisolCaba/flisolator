@@ -14,8 +14,9 @@ services:
       options:
         max-size: "10m"
     environment:
-    - HTTP_USER=root
-    - HTTP_PASS=
+      HTTP_USER:
+      HTTP_PASS:
     restart: unless-stopped
   squid:
     image: datadog/squid
+    restart: unless-stopped
