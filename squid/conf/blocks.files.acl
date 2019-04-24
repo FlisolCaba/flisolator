@@ -1,0 +1,10 @@
+# By  http://www.cyberciti.biz/faq/squid-content-filter-block-files/
+# and http://servercomputing.blogspot.com.ar/2012/02/block-downloading-file-types-in-squid.html
+# /etc/squid/blocks.files.acl
+\.[Ee][Xx][Ee]$                                       #block downloading exe executable files
+\.[Mm][Pp]3 $                                         #Block mp3 music files
+\.7[Zz]$                                              #Block 7z archive files
+\.[Zz][Ii][Pp]$                                       #Block ZIP archive files
+#\.[Aa][Vv][Ii]$                                       #Block avi video files
+\.[Tt][Oo][Rr][Rr][Ee][Nn][Tt]$                       #Block torrent files
+#(Add the above required file extensions types and save the file)

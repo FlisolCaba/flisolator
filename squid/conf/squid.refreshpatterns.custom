@@ -1,0 +1,17 @@
+
+# Windows update by http://wiki.squid-cache.org/SquidFaq/WindowsUpdate
+#refresh_pattern -i microsoft.com/.*\.(cab|exe|ms[i|u|f]|asf|wm[v|a]|psf|dat|zip) 4320 80% 43200 reload-into-ims
+#refresh_pattern -i windowsupdate.com/.*\.(cab|exe|ms[i|u|f]|asf|wm[v|a]|psf|dat|zip) 4320 80% 43200 reload-into-ims
+#refresh_pattern -i my.windowsupdate.website.com/.*\.(cab|exe|ms[i|u|f]|asf|wm[v|a]|psf|dat|zip) 4320 80% 43200 reload-into-ims
+
+# from http://forum.pfsense.org/index.php/topic,46793.0.html
+refresh_pattern -i microsoft.com/.*\.(cab|exe|ms[i|u|f]|asf|wm[v|a]|psf|dat|zip) 4320 80% 43200 override-expire override-lastmod reload-into-ims ignore-reload ignore-no-cache ignore-private
+refresh_pattern -i windowsupdate.com/.*\.(cab|exe|ms[i|u|f]|asf|wm[v|a]|psf|dat|zip) 4320 80% 43200 override-expire override-lastmod reload-into-ims ignore-reload ignore-no-cache ignore-private
+refresh_pattern -i my.windowsupdate.website.com/.*\.(cab|exe|ms[i|u|f]|asf|wm[v|a]|psf|dat|zip) 4320 80% 43200 override-expire override-lastmod reload-into-ims ignore-reload ignore-no-cache ignore-private
+range_offset_limit 100 MB
+quick_abort_pct 60
+
+
+# Added by Fefu
+refresh_pattern -i .*\.(cab|exe|ms[i|u|f]|asf|wm[v|a]|psf|dat|zip) 4320 80% 43200 override-expire override-lastmod reload-into-ims ignore-reload ignore-no-cache ignore-private 
+
