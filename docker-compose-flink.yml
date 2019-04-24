@@ -3,9 +3,9 @@ services:
   dnsmasq:
     image: jpillora/dnsmasq
     ports:
-    - 53:53/udp
-    - 53:53/tcp
-    - 67:67/udp
+    - 172.16.0.1:53:53/udp
+    - 172.16.0.1:53:53/tcp
+    - 172.16.0.1:67:67/udp
     network_mode: "host"
     volumes:
     - /etc/resolv.conf:/etc/resolv.conf:ro
