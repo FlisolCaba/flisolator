@@ -1,68 +1,9 @@
 # Definicion de Access controls lists (segun TK2011051010000031)
 # Red local
-acl lan1 src 192.168.10.0/24
+acl lan1 src 172.16.0.0/16
 
-# Servidores
-acl servidores src 192.168.10.2
-
-# Computadoras sin restricciones (Luis, Analia, Miriam, Marisa, Patricia)
-acl pcslibres src 192.168.10.73 192.168.10.70 192.168.10.74 192.168.10.67 192.168.10.69
-
-# Nombres de computadoras
-acl PC21 src 192.168.10.71
-
-# Terminaciones de los dominios a los que se puede acceder sin problemas
-acl okdomains1 dstdomain .debian.org .correoargentino.com.ar
-acl okdomains2 dstdomain .gob.ar .gov.ar .org.ar .org .errepar.com
-
-# Grooveshark TK2011051210000054
-acl okdomains3 dstdomain .grooveshark.com .gs-cdn.net
-
-# Antivirus TK2011063010000063
-acl antivirus dstdomain .avg.com
-
-# Computadoras de flisol TK2011051210000054
-#acl flisol src 192.168.10.74
-#acl ent src 192.168.10.100
-
-# Bloqueo de archivos ejecutables
-acl blockfiles urlpath_regex -i “/etc/squid3/blocks.files.acl”
-
-# Computadoras de nuevo usuarios
-acl newusers src 192.168.10.60 192.168.10.69 192.168.10.70 192.168.10.75 192.168.10.82
-
-# Denegar la descarga de archivos a nuevos usuarios
-#http_access deny newusers blockfiles
-
-
-
-# Acceso ilimitado desde la red local TK2011063010000171
+# allow lan1
 http_access allow lan1
 
-# Acceso ilimitado a los servidores
-http_access allow servidores
-
-# Horario de almuerzo
-acl horarioalmuerzo time MTWHF 12:00-14:00
-
-# Acceso ilimitado a flisol
-#http_access allow flisol 
-
-# Acceso ilimitado a las pcs que no tienen restricciones
-http_access allow pcslibres
-
-# Acceso desde la red local a los dominios autorizados
-http_access allow lan1 antivirus
-http_access allow lan1 okdomains1
-http_access allow lan1 okdomains2
-
-# Acceso desde la red local a cualquier sitio durante el horario de almuerzo
-http_access allow lan1 horarioalmuerzo
-
-# Grooveshark desde PC21 TK2011051210000054
-http_access allow PC21 okdomains3
-
-# And finally deny all other access to this proxy
+# deny access to others
 http_access deny all
-
-
