@@ -22,7 +22,7 @@ services:
       HTTP_PASS:
     restart: unless-stopped
   squid:
-    image: datadog/squid
+    image: sameersbn/squid:latest
     ports:
     - 3128:3128
     restart: unless-stopped
