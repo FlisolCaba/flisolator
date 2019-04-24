@@ -2,7 +2,16 @@ version: '3'
 services:
   tftpd-hpa:
     image: jumanjiman/tftp-hpa
+    ports:
+    - 69:69/udp
+    restart: unless-stopped
+    volumes:
+    - ./tftp-hpa/tftpboot:/tftpboot:ro
+
   nginx:
     image: nginx:mainline-alpine
+    restart: unless-stopped
+
   nfs:
     image: outstand/nfs-client
+    restart: unless-stopped
