@@ -2,3 +2,6 @@
 dnsmasq/dnsmasq.leases
 tftp-hpa
 squid/cache
+*.swp
+*.bak
+*~
