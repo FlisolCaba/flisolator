@@ -23,6 +23,13 @@ services:
     restart: unless-stopped
   squid:
     image: datadog/squid
+    ports:
+    - 3128:3128
     restart: unless-stopped
     volumes:
+    - ./squid/conf/squid.conf:/etc/squid/squid.conf
+    - ./squid/conf/squid.acl.custom:/etc/squid/squid.acl.custom
+    - ./squid/conf/squid.refreshpatterns.custom:/etc/squid/squid.refreshpatterns.custom
+    - ./squid/conf/errorpage.css:/etc/squid/errorpage.css
+    - ./squid/conf/blocks.files.acl:/etc/squid/blocks.files.acl
     - ./squid/cache:/var/spool/squid
