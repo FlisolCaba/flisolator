@@ -2,5 +2,3 @@
 HTTP_USER=root
 HTTP_PASS=password
 
-# nfs
-SERVER=172.16.0.10
