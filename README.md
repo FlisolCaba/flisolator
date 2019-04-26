@@ -1,6 +1,18 @@
 # Filsolator J to X again
 
-Implementation of a PXE Stack over Docker
+Implementation of a PXE Stack over Docker, used during [FLISoL CABA](https://caba.flisol.org.ar) installation event.
+
+## What's This About
+
+The main idea is to use a swarm of servers to serve ISOs and packages in parallel, with one director. The director manages the DNS and DHCP, and runs the PXE boot (for both BIOS and UEFI). Then, it directs the request to a node that has a TFTP and NFS/HTTP server to send the required files to boot, run and install any distro.  
+We call the director *flink* and each node *fnode*.
+
+The *flink* uses **dnsmasq** to serve DNS, DHCP and PXE, **squid** as a proxy cache for packages and web content and **shorewall** as firewall to both protect the server and redirect port 80 (plain HTTP) to **squid** for caching and balancing port 443 (HTTPS).
+
+The *fnode* uses **nfs** to mount a share with the ISOs and **nginx** to server the same but over HTTP, and **tftpd** for the TFTP-HPA server.  
+You can have as many nodes as you want, the more the better and at least one.
+
+It is possible to have *flink* and *fnode* in the same baremetal, but you'll require a large amount of RAM and a fast processor, and you'll loose parallelization.
 
 ## Tools That We Use
 
@@ -22,33 +34,33 @@ Implementation of a PXE Stack over Docker
 
 ## ToDo
 
- -  [ ] step by step instructions (1%)
+ -  [x] step by step instructions
  -  [ ] translate this repo to Spanish (0%)
- -  [ ] flink docker-compose file
-   -  [ ] dnsmasq config
-   -  [ ] squid config
-      -  [ ] transparent proxy
-      -  [ ] bandwidth limit?
- -  [ ] fnode docker-compose file
-   -  [ ] tftp config
-   -  [ ] nfs config
-   -  [ ] nginx config
+ -  [x] flink docker-compose file
+   -  [x] dnsmasq config
+   -  [x] squid config
+      -  [x] transparent proxy
+      -  [x] bandwidth limit?
+ -  [x] fnode docker-compose file
+   -  [x] tftp config
+   -  [x] nfs config
+   -  [x] nginx config
  - [ ] distro support
-   -  [ ] ubuntu
-      -  [ ] mate
-      -  [ ] xubuntu
-   -  [ ] linuxmint
-      -  [ ] cinnamon
-      -  [ ] mate
-      -  [ ] xfce
-   -  [ ] debian
+   -  [x] ubuntu
+      -  [x] mate
+      -  [x] xubuntu
+   -  [x] linuxmint
+      -  [x] cinnamon
+      -  [x] mate
+      -  [x] xfce
+   -  [x] debian
    -  [ ] manjaro
    -  [ ] tools
       -  [ ] sysrescuecd
       -  [ ] archlinux
-      -  [ ] gparted live
+      -  [x] gparted live
 
-### requirements
+## Requirements
 
  -  At least one baremetal or vm with linux
     -  [x] tested on debian
@@ -58,16 +70,6 @@ Implementation of a PXE Stack over Docker
     -  [ ] tested on centos
  -  docker
  -  docker-compose
-
-# Idea
-
-The main idea is to use a swarm of servers to serve ISOs and packages in parallel, with one director. The director manages the DNS and DHCP, and runs the PXE boot (for both BIOS and UEFI). Then, it directs the request to a node that has a TFTP and NFS/HTTP server to send the required files to boot, run and install any distro.  
-We call the director *flink* and each node *fnode*.
-
-The *flink* uses **dnsmasq** to serve DNS, DHCP and PXE, **squid** as a proxy cache for packages and web content and **shorewall** as firewall to both protect the server and redirect port 80 (plain HTTP) to **squid** for caching and balancing port 443 (HTTPS).
-
-The *fnode* uses **nfs** to mount a share with the ISOs and **nginx** to server the same but over HTTP, and **tftpd** for the TFTP-HPA server.  
-You can have as many nodes as you want, the more the better and at least one.
 
 # Deploying
 
