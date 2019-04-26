@@ -4,6 +4,11 @@ timeout 0
 default vesamenu.c32
 menu include pxelinux.cfg/graphics.conf
 
+label ubuntu
+    menu label Ubuntu
+    kernel vesamenu.c32
+    append pxelinux.cfg/ubuntu.conf
+
 label localboot
         menu label Arranque local (HDD/SDD)
         localboot 0
