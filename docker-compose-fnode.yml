@@ -18,7 +18,7 @@ services:
     environment:
     # change this with local ip
     - SERVER: 172.16.0.10
-    - SHARE: movies
+    - SHARE: isos
     - MOUNT_OPTIONS: "ro,async,no_subtree_check,all_squash"
     - FSTYPE: nfs4
     - MOUNTPOINT: /mnt/host
