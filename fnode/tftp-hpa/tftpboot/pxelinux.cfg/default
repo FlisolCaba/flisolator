@@ -4,6 +4,11 @@ timeout 0
 default vesamenu.c32
 menu include pxelinux.cfg/graphics.conf
 
+label debian
+    menu label Debian
+    kernel vesamenu.c32
+    append pxelinux.cfg/debian.conf
+
 label ubuntu
     menu label Ubuntu
     kernel vesamenu.c32
