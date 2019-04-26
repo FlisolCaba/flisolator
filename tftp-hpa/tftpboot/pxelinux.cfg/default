@@ -3,7 +3,7 @@ console 1
 prompt 1
 
 # Fetch a file via tftp and display it by default.
-display pxelinux.cfg/f1.msg
+display pxelinux.cfg/flisol.msg
 
 # Fetch a file via tftp and display it if user presses F1.
 F1 pxelinux.cfg/f1.msg
