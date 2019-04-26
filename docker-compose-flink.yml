@@ -10,9 +10,9 @@ services:
     privileged: true
     volumes:
     - /etc/resolv.conf:/etc/resolv.conf:ro
-    - ./dnsmasq/dnsmasq.conf:/etc/dnsmasq.conf:ro
-    - ./dnsmasq/fnodes:/etc/fnodes:ro
-    - ./dnsmasq/dnsmasq.leases:/tmp/dnsmasq.leases
+    - ./flink/dnsmasq/dnsmasq.conf:/etc/dnsmasq.conf:ro
+    - ./flink/dnsmasq/fnodes:/etc/fnodes:ro
+    - ./flink/dnsmasq/dnsmasq.leases:/tmp/dnsmasq.leases
     logging:
       driver: "json-file"
       options:
@@ -29,9 +29,9 @@ services:
     network_mode: "host"
     restart: unless-stopped
     volumes:
-    - ./squid/conf/squid.conf:/etc/squid/squid.conf
-    - ./squid/conf/squid.acl.custom:/etc/squid/squid.acl.custom
-    - ./squid/conf/squid.refreshpatterns.custom:/etc/squid/squid.refreshpatterns.custom
-    - ./squid/conf/errorpage.css:/etc/squid/errorpage.css
-    - ./squid/conf/blocks.files.acl:/etc/squid/blocks.files.acl
-    - ./squid/cache:/var/spool/squid
+    - ./flink/squid/conf/squid.conf:/etc/squid/squid.conf
+    - ./flink/squid/conf/squid.acl.custom:/etc/squid/squid.acl.custom
+    - ./flink/squid/conf/squid.refreshpatterns.custom:/etc/squid/squid.refreshpatterns.custom
+    - ./flink/squid/conf/errorpage.css:/etc/squid/errorpage.css
+    - ./flink/squid/conf/blocks.files.acl:/etc/squid/blocks.files.acl
+    - ./flink/squid/cache:/var/spool/squid
