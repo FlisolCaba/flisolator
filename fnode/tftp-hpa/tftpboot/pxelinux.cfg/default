@@ -4,18 +4,26 @@ timeout 0
 default vesamenu.c32
 menu include pxelinux.cfg/graphics.conf
 
-label debian
-    menu label Debian
-    kernel vesamenu.c32
-    append pxelinux.cfg/debian.conf
-
 menu separator
-
 
 label ubuntu
     menu label Ubuntu
     kernel vesamenu.c32
     append pxelinux.cfg/ubuntu.conf
+
+menu separator
+
+label manjaro
+    menu label Manjaro
+    kernel vesamenu.c32
+    append pxelinux.cfg/manjaro.conf
+
+menu separator
+
+label debian
+    menu label Debian
+    kernel vesamenu.c32
+    append pxelinux.cfg/debian.conf
 
 menu separator
 
