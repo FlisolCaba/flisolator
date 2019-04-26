@@ -1,4 +1,5 @@
 .env
+fnode/tftp-hpa/tftpboot/isos/*
 dnsmasq/dnsmasq.leases
 squid/cache
 *.swp
