@@ -2,6 +2,7 @@ version: '3'
 services:
   tftpd-hpa:
     image: jumanjiman/tftp-hpa
+    network_mode: host
     ports:
     - 69:69/udp
     restart: unless-stopped
