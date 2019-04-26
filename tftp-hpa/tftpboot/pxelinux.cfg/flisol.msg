@@ -1,6 +1,0 @@
-UI vesamenu.c32
-DEFAULT arch
-PROMPT 0
-MENU TITLE Boot Menu
-MENU BACKGROUND splash.png
-TIMEOUT 50
