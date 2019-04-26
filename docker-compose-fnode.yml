@@ -16,12 +16,11 @@ services:
     volumes:
     - ./nfs/isos:/mnt/host
     environment:
-    # change this with local ip
-    - SERVER: 172.16.0.10
-    - SHARE: isos
-    - MOUNT_OPTIONS: "ro,async,no_subtree_check,all_squash"
-    - FSTYPE: nfs4
-    - MOUNTPOINT: /mnt/host
+      SERVER:
+      SHARE: isos
+      MOUNT_OPTIONS: "ro,async,no_subtree_check,all_squash"
+      FSTYPE: nfs4
+      MOUNTPOINT: /mnt/host
 
   nginx:
     image: nginx:mainline-alpine
