@@ -1,9 +1,19 @@
 # Definicion de Access controls lists (segun TK2011051010000031)
 # Red local
 acl lan1 src 172.16.0.0/16
+acl to_localhost dst 127.0.0.1
+
+# Deny blackweb domains
+acl blacklist1 dstdomain "/etc/squid/blackweb.acl"
+# Deny streaming and privative social networking domains
+acl blacklist2 dstdomain "/etc/squid/blacklist2.acl"
+
+http_access deny to_localhost
+#http_access deny blacklist1
+http_access deny blacklist2
 
 # allow lan1
 http_access allow lan1
 
-# deny access to others
-http_access deny all
+
+
