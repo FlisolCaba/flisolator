@@ -26,6 +26,7 @@ services:
     image: sameersbn/squid:latest
     ports:
     - 3128:3128
+    network_mode: "host"
     restart: unless-stopped
     volumes:
     - ./squid/conf/squid.conf:/etc/squid/squid.conf
