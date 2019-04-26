@@ -1,5 +1,5 @@
 # Add each node here, as many as you have.
 # Then add them too in dnsmasq.conf
-172.16.0.10	fnode fnode0
-172.16.0.11	fnode fnode1
-172.16.0.12	fnode fnode2
+172.16.0.10	fnode fnode00
+172.16.0.11	fnode fnode01
+172.16.0.12	fnode fnode02
