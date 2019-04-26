@@ -11,6 +11,7 @@ Implementation of a PXE Stack over Docker
  -  [nginx](https://nginx.org/)
  -  [nfs](https://en.wikipedia.org/wiki/Network_File_System)
  -  [squid](http://www.squid-cache.org/)
+ -  [syslinux](https://repo.or.cz/syslinux.git)
  -  [gparted live](https://gparted.org/livecd.php)
  -  [sysrescuecd](http://www.system-rescue-cd.org/) <!-- boot over pxe? -->
  -  [archlinux live](https://www.archlinux.org/)
@@ -99,3 +100,8 @@ iface enp3s0 inet static
 7. Change squid settings accordingly (defaults should suffice).
 8. Start the *flink*: `docker-compose -f docker-compose-flink.yml up -d`
 
+# License
+
+flisolator Copyright (C) 2019  snkisuke under [GNU AGPL v3.0+](LICENSE). You are free to use, share, modify and share modifications under the terms of that license.
+
+syslinux files are licensed under [GNU GPL v2.0+](https://repo.or.cz/syslinux.git/blob/HEAD:/COPYING)
