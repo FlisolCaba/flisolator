@@ -7,7 +7,7 @@ services:
     - 69:69/udp
     restart: unless-stopped
     volumes:
-    - ./tftp-hpa/tftpboot:/tftpboot:ro
+    - ./fnode/tftp-hpa/tftpboot:/tftpboot:ro
 
   nfs:
     image: outstand/nfs-client
@@ -15,7 +15,7 @@ services:
     network_mode: "host"
     privileged: true
     volumes:
-    - ./nfs/isos:/mnt/host
+    - ./fnode/nfs/isos:/mnt/host
     environment:
       SERVER:
       SHARE: isos
