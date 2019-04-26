@@ -9,16 +9,22 @@ label debian
     kernel vesamenu.c32
     append pxelinux.cfg/debian.conf
 
+menu separator
+
 
 label ubuntu
     menu label Ubuntu
     kernel vesamenu.c32
     append pxelinux.cfg/ubuntu.conf
 
+menu separator
+
 label tools
     menu label Tools
     kernel vesamenu.c32
     append pxelinux.cfg/tools.conf
+
+menu separator
 
 label localboot
         menu label Arranque local (HDD/SDD)
