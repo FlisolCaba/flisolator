@@ -12,3 +12,8 @@ services:
   nginx:
     image: nginx:mainline-alpine
     restart: unless-stopped
+    ports:
+    - 80:80/tcp
+    volumes:
+    - ./fnode/tftp-hpa/tftpboot/isos:/usr/share/nginx/html:ro
+
