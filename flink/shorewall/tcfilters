@@ -1,0 +1,23 @@
+#
+# Shorewall version 4 - Tcfilters File
+#
+# For information about entries in this file, type "man shorewall-tcfilters"
+#
+# See http://shorewall.net/traffic_shaping.htm for additional information.
+#
+##############################################################################################
+#INTERFACE:     SOURCE          DEST            PROTO   DEST    SOURCE   TOS            LENGTH
+#CLASS                                                  PORT(S) PORT(S)
+
+IPV4
+1:11            0.0.0.0/0       0.0.0.0/0       tcp     22
+1:11            0.0.0.0/0       0.0.0.0/0       udp     22
+1:11            0.0.0.0/0       0.0.0.0/0       tcp     -       22
+1:11            0.0.0.0/0       0.0.0.0/0       udp     -       22
+1:12            0.0.0.0/0       0.0.0.0/0       icmp
+1:12            0.0.0.0/0       0.0.0.0/0       tcp     53
+1:12            0.0.0.0/0       0.0.0.0/0       udp     53
+1:13            0.0.0.0/0       0.0.0.0/0       tcp     25,110,465,587,995
+1:13            0.0.0.0/0       0.0.0.0/0       udp     25,110,465,587,995
+1:14            0.0.0.0/0       0.0.0.0/0       tcp     80,443
+

@@ -1,0 +1,23 @@
+#
+# Shorewall version 4 - Tcdevices File
+#
+# For information about entries in this file, type "man shorewall-tcdevices"
+#
+# See http://shorewall.net/traffic_shaping.htm for additional information.
+#
+###############################################################################
+#NUMBER:        IN-BANDWITH     OUT-BANDWIDTH   OPTIONS         REDIRECTED
+#INTERFACE                                                      INTERFACES
+##Following instructions from http://www.ckollars.org/shaping.html
+# These available bandwidth numbers should mesh with reality, so if our ISP
+#  changes our service these should change.
+# Note we limit out-bandwidth to considerably less than the modem is capable
+#  of because inbound traffic _always_ predominates at IMHS.
+# Also note we specify an in-bandwidth of 0, which means no qdisc is assigned
+#  to the inbound direction of the interface. This is quicker and it eliminates
+#  any possibility of the "Classifier actions preferred over netfilter" message.
+#  But it means we don't control ingress at all so packets _could_ back up
+#  in a queue somewhere inside our ISP.
+##
+1:$WAN_IF        0               9Mbps # limit for WAN
+#2:eth2          32kbps          128kbps  # limit for WLAN

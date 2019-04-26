@@ -39,10 +39,18 @@ ACCEPT		$FW		loc		icmp
 ACCEPT		$FW		net		icmp
 
 # Custom Rules
+Ping(ACCEPT)    loc             net             icmp   -       -       -       s:ping:1/sec:5 #Accept one ping packet per second
+SSH(ACCEPT)	loc		net		#Allows local clients to ask to WAN ssh 
 DNS(ACCEPT)	loc		$FW		#Allows local clients to ask to the local Bind9 DNS Cache
-SSH(ACCEPT)	net		$FW		-	-	-	-	s:ssh:2/min:3 #Accept SSH connections from the external network for administration
+HTTP(ACCEPT)	loc		$FW		#Allows local clients to ask to the local HTTP
+HTTPS(ACCEPT)	loc		$FW		#Allows local clients to ask to the local HTTPS
+HTTPS(ACCEPT)	loc		net		#Allows local clients to ask to the WAN HTTPS
 
 # Squid Transparent proxy following instructions http://www.shorewall.net/Shorewall_Squid_Usage.html
 #HTTP(ACCEPT)	$FW		net			#Not needed. Already in policies file
 REDIRECT	loc		$SQUID_PORT     tcp	www		-
+REDIRECT	loc		53              udp     53		-
+#REDIRECT	loc		3129            tcp	443             -
 
+# Whitelist for special adminisrators
+ACCEPT          loc:$WHITELIST  net

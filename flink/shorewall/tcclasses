@@ -1,0 +1,39 @@
+#
+# Shorewall version 4 - Tcclasses File
+#
+# For information about entries in this file, type "man shorewall-tcclasses"
+#
+# See http://shorewall.net/traffic_shaping.htm for additional information.
+#
+###############################################################################
+#INTERFACE:CLASS        MARK    RATE:           CEIL    PRIORITY        OPTIONS
+#                               DMAX:UMAX
+##Following instructions from http://www.ckollars.org/shaping.html
+# We use
+#  mark/prio 1 for interactive (only remote administration, very little),
+#  mark/prio 2 for DNS (normally much much less, this is a worst case ceiling,
+#   the high priority is to minimize hangs as much as possible)
+#  mark/prio 3 for email in (usually uses above allocations too, runs quickly
+#   when needed, but just passes allocation down most of the time),
+#  mark/prio 4 for web (main legitimate use),
+#  and mark/prio 5 is everything else (i.e. P2P, MMORPG, "bulk", etc.)
+#   (last class is assumed to contain most discouraged uses and little else)
+# Class 5 guaranteed rate is very small to reduce
+#  responsiveness so much MMORPGs aren't usable - mostly class 5 bandwidth
+#  depends on "surplus" bandwidth cascading down unused from higher 
+#  priorities, and as a result is too bursty for interactive use
+$WAN_IF:15            5       10*full/100          9*full/10    5  default
+$WAN_IF:14            4       60*full/100          full    4
+$WAN_IF:13            3       15*full/100          full    3
+$WAN_IF:12            2       10*full/100          full    2
+$WAN_IF:11            1       5*full/100           full    1
+#                       Note sum of RATEs is exactly 100%.
+#
+# Placing a CEIL other than "full" (or almost-full?) on the last
+#  class slows our web responsiveness noticeably (!?) - some sort of interaction
+#  with our ISP seems the most likely explanation; maybe enforcement of CEIL
+#  introduces short quiet periods and our ISP interprets those quiet periods
+#  as our needing less bandwidth...  otherwise it might be prudent to 
+#  specify CEIL as 9*full/10 as yet one more method of enforcing that no
+#  one class could ever completely exclude other classes no matter what
+
